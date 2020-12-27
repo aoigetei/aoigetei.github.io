@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>Finding Characters and Animations | Ainoghena Igetei</title>
+
+    <!-- CUSTOM CSS STYLESHEET-->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+
+  </head>
+  <body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div class="collapse navbar-collapse justify-content-md-center">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="../../index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="../../Games/games.html">Projects</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+
+      <div class="row" style="margin-top: 50px;">
+        <div class="col">
+          <h1 class="text-muted"> Finding Characters and Animations </h1>
+          <div class="mb-1 text-muted">December 26</div>
+          <hr>
+        </div>
+      </div>
+      <div class="row" style="margin-top: 50px;">
+        <p>
+          When I started playing around with Unity3D and developing games earlier this year, I always had a vision to create games using characters with 
+          cool animations. However I never really though about where these characters would come from and how animating them would work. I think
+          it is simple to see or play games and just assume that characters are a given without much thought for the creation and animation of said 
+          characters. </br>
+          With all that being said, in search of characters and animations for making games I ran into a great FREE source for both characters and animations - <a href="https://www.mixamo.com/">mixamo</a> 
+          mixamo is brought to us by Adobe and all you need to do is create an Adobe account (also FREE) and you will be able to download characters and animations that you can use in your projects, 
+          and and and you can use characters and animations royalty free for personal, commercial, and other non-profit projects. What a great time to be alive and developing games :D. Enough rambling 
+          in this post I will walk you through creating an account for mixamo, downloading characters and animations, and finally importing those characters to Unity3D and appying animations to them.
+        </p>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <h4 class="text-muted"> Create mixamo account </h4>
+          <div>
+            <p>
+              To create a mixamo account, if you do not already have an active Adobe account go to the mixamo main page <a href="https://www.mixamo.com/">mixamo</a>. Then select the sign up button, create an account 
+              and log in. If you already have an active account log in.
+            </br>
+          </p>
+          <img src="Images/mixamo_signup_1.JPG" class="float-left" style="width: 100%;">
+
+          </div>
+        </div>
+      </div>
+
+      </br>
+
+      <div class="row">
+        <div class="col">
+          <h4 class="text-muted"> Downloading characters and animations </h4>
+          <div>
+            <p>
+              After signing into you mixamo account, it will bring you to a screen very similar to the screen below. There are two tabs, Characters and Animations. The Characters tab contains all of the free characters you can 
+              download and use, and the animations tab contains all the animations you can download and apply to any of the characters in the characters tab. First we will walk through downloading a charcter:
+              <ul>
+
+                <li> First Select the <strong> Characters </strong> tab</li>
+                <li> Select the character you like, then it should be displayed on the right in a larger viewing window. In this case we chose "Erika Archer" for this demo</li>
+                <li> Finally, <strong> Download </strong> the character.</li>
+                <img src="Images/mixamo_loggedIn_annotated.jpg" class="float-left" style="width: 100%; margin: 10px;">
+                <li > You will get a prompt like below.</li>
+                <img src="Images/mixamo_loggedIn_download_character.JPG">
+                <p> 
+                </br>
+                  Make sure the <em>Format</em> you select is <strong>FBX for Unity</strong>. The Pose does not matter, I typically leave that as the default.
+                </p>
+                <li> Second, select the <strong> Animations </strong> tab </li>
+                <li> 
+                  Select the animation you would like to apply to the character (we have choosen capoeira), it should now be applied to the character and be displayed on the right in the larger viewing window. 
+                  Each animation usually has additional settings that allow you to play around with the posture and motions of the animation, this is also located to the right of the viewing window. A settings that is
+                  important to pay attention to in some animations is the <strong>In Place</strong> toggle, when this option is available it forces the animation to occur in place without physically displacing the character. An 
+                  animation that has this setting is the <em> Running </em> animation, play around with it to see the difference. I use this when I want a character to run in place, the actual displacement in the game when I use this animation is handled by my
+                  character controller. 
+                </li>
+                <img src="Images/mixamo_loggedIn_choose_animation_annotated.jpg" class="float-left" style="width: 100%; margin: 10px;">
+
+                <p> A few things to note when displaying animations, some animations require the character to move around. You can easily keep the character always in view by toggling the camera follow.</p>
+                <img src="Images/mixamo_animation_camera_follow.jpg" style="width: 50%;height: 50%; margin: 10px;">
+
+                <li> Finally, <strong> Download </strong> the animation. You will get a similar prompt to when you downloaded the character</li>
+                <img src="Images/mixamo_loggedIn_download_animation.JPG">
+                <p> 
+                </br>
+                  Again make sure the <em>Format</em> you select is <strong>FBX for Unity</strong>. <em>Skin</em> can be set to either <em>With Skin</em> or <em>Without Skin</em>, I typically select <strong> Without skin </strong> - Skin referes to if you want
+                  the character to be included with the animation download. <em>Frames per second</em> refers to the frame rate of the animation, I typically choose <strong>30 or higher</strong>. Never had any issues with glitchy animation. Finally <em>Key Frame Reduction</em>
+                   this is allows the animation to skip "non-key" frames - frames that are within some delta of the previous frame in terms of similarity, this leads to less frames in your animation, but can cause animation to look less fluid. Not every one 
+                   notices this things, but I typically set it to <strong>none</strong> and let the Unity3D Gods handle the rest heh. 
+                </p>
+                
+              </ul>
+            </p>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <h4 class="text-muted">Import character and animation to Unity3D</h4>
+          </div>
+          <div class="row">
+            <p>
+              Open/Create a Unity3D project and drag the character and animation into the <strong>Project</strong> window. I typically like to put things in folders for organization, see the <strong>Animations</strong> and 
+              <strong>Characters</strong> folders.
+            </p>
+            <img src="Images/unity3d_add_character_and_animation.JPG" class="float-left" style="width: 30%; height: 30%; margin: 10px;">
+          </div>
+
+          <div class="row">
+            <p>
+              Now when we drag our character GameObject from the <strong>Characters</strong> folder into the scene window, we notice that the textures of the charater are not showing. This because our character model is not configured
+              properly.
+            </p>
+            <img src="Images/unity3d_character_1.JPG" class="float-left" style="width: 100%; margin: 10px;">
+          </div>
+
+          <div class="row">
+            <p>To configure our character and animation do the following: </p>
+            <ul>
+              <li> First select the Character GameObject model in the <strong>Project</strong> window </li>
+              <li> Select the <strong>Materials</strong> tab in the inspector </li>
+              <li> Under this tab, Select <strong>Extract Textures</strong> button. This will download extract the textures associated with the character and prompt you to save these textures somewhere. I like to use folders, 
+              so I create a new folder called <em>Textures</em> in the <em>Characters</em> folder and select the new <em>Textures</em> folder as the destination for the textures. After this you will notice that the Character should now
+              have the textures visible. </li>
+              <li> Repeat the same step above for the Materials. <strong>Extract Materials</strong> create a folder in the Characters folder and place the materials in there.</li>
+              <img src="Images/unity3d_character_2_annotated.jpg" class="float-left" style="width: 100%; margin: 10px;">
+  
+              <li> Next, Select the <strong>Rig</strong> tab in the inspector</li>
+              <li> Under this tab, set the <em>Animation Type</em> to <em>Humanoid</em> because our character is a human. Set the <em>Avatar Definition</em> to <em>Create From This Model</em></li>
+              <li> Select <strong>Apply</strong> </li>
+              <img src="Images/unity3d_character_3.JPG" class="float-left" style="width: 100%; margin: 10px;">
+            </ul>
+          </div>
+
+          <div class="row">
+            <p> By default our animation will not show up on our character. We need to configure this to work: </p>
+            <ul>
+              <li> Select the Capoeira GameObject in the <strong>Project</strong> window</li>
+              <li> Under the <strong>Rig</strong> tab in the inspector, set the <em>Animation Type</em> to <em>Humanoid</em>. Set the <em>Avatar Definition</em> to <em>Create From Other Model</em>, because we will be using our character as the 
+              model for this animation. Click on the <em>Source</em> field and set it to our character's avatar</li>
+              <li>Select <strong>Apply</strong></li>
+              <img src="Images/unity3d_character_4.JPG" class="float-left" style="width: 70%; height: 70%; margin: 10px;">
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col">
+          <div class="row">
+            <div>
+              <h4 class="text-muted">Apply animation to character</h4>
+              </br>
+              <p> Finally, to apply the animation to the character. We have to do the following steps: </p>
+            </div>
+            <ul>
+              <li> First, create an <em>Animator Controller</em>. Select the <em> Animation GameObject </em> (Capoeira) in the <strong>Project</strong> window. I named mine <em>CapoeiraAnimation</em></li> 
+              <img src="Images/unity3d_character_6.JPG" class="float-left" style="width: 100%; margin: 10px;">
+              <li> Select the character GameObject (erika_archer) in the <strong>Hierarchy</strong> window. Drag the <em>CapoeiraAnimation</em> into the Controller field of the Animator</li>
+              <img src="Images/unity3d_character_7.JPG" class="float-left" style="width: 100%; margin: 10px;">
+              <li> Open the <strong>Animator</strong> window </li>
+              <img src="Images/unity3d_character_8.JPG" class="float-left" style="width: 100%; margin: 10px;">
+              <li> Select the Opened <strong>Animator</strong> window, Select the <em>CapoeiraAnimation</em>, then drag the animation clip (mixamo.com is the default name) into the <strong>Animator</strong> window</li>
+              <img src="Images/unity3d_character_9.JPG" class="float-left" style="width: 100%; margin: 10px;">
+              <li> Finally, press the <em>Play</em> button and you should see the character in the scene performing the animation. </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p>
+        I hope you were able to follow through and get the Character imported and the animation working on your end. There are a ton of things you can do with the characters and animations you get from mixamo. This is just a basic tutotial
+        to get things into the Unity3D editor and moving around. Using animations for a real game requires some additional steps, I think the best way to get better at using characters and animations is to actually start using them. Also, 
+        some great resources to learn more about Unity3D animations are:
+        <ul>
+          <li> <a href="https://learn.unity.com/project/fundamentals-of-3d-animation-in-unity"> Unity Learn - fundamentals of 3d animation in unity</a></li>
+          <li> <a href="https://docs.unity3d.com/Manual/AnimationSection.html"> Unity Docs - Animation </a></li>
+        </ul>
+
+        To get a better idea of some projects you can create, I have used characters and animations in a few of my <a href="/Games/games.html">projects</a> centered around mixamo charactes, so check those out. 
+      </p>
+
+      </br>
+
+      <h4>Thank you!</h4>
+
+    </div>
+
+
+      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
+  </body>
+</html>
